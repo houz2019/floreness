@@ -1,7 +1,7 @@
 pipeline {
   environment {
     registry = "houzini01/floreness"
-    registryCredential = 'dockerhub'
+    registryCredential = 'dockerhub-houzini01'
     dockerImage = ''
   }
   agent any
