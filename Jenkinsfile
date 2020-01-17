@@ -1,7 +1,7 @@
 pipeline {
   environment {
     registry = "houzini01/floreness"
-    registryCredential = 'dockerhub-houzini01'
+    registryCredential = 'dockerhub'
     dockerImage = ''
   }
   agent any
@@ -14,7 +14,7 @@ pipeline {
     stage('Building image') {
       steps{
         script {
-          dockerImage = docker.build registry + ":$BUILD_NUMBER"
+          dockerImage = docker.build registry
         }
       }
     }
@@ -29,7 +29,7 @@ pipeline {
     }
     stage('Remove Unused docker image') {
       steps{
-        sh "docker rmi $registry:$BUILD_NUMBER"
+        sh "docker rmi $registry
       }
     }
   }
